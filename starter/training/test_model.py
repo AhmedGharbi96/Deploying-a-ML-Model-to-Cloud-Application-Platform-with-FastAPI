@@ -4,12 +4,10 @@ from pathlib import Path
 import pandas as pd
 import pytest
 from sklearn.model_selection import train_test_split
-
-from starter.starter.ml.data import process_data
-from starter.starter.ml.model import (
+from starter.training.ml.data import process_data
+from starter.training.ml.model import (
     compute_model_metrics,
     inference,
-    load_model_or_encoder,
     save_model_or_encoder,
     train_model,
 )
@@ -28,21 +26,6 @@ def data():
     # Add code to load in the data.
     data = pd.read_csv(Path(root, "starter", "data", "census_cleaned.csv"))
     return data
-
-
-@pytest.fixture()
-def loaded_model():
-    return load_model_or_encoder(Path(root, "starter", "model", "classifier.pkl"))
-
-
-@pytest.fixture()
-def loaded_encoder():
-    return load_model_or_encoder(Path(root, "starter", "model", "encoder.pkl"))
-
-
-@pytest.fixture()
-def loaded_lb():
-    return load_model_or_encoder(Path(root, "starter", "model", "lb.pkl"))
 
 
 def test_train_model(data):

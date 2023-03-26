@@ -1,5 +1,12 @@
+import logging
+import os
+
+import boto3
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 
 def process_data(
@@ -68,3 +75,24 @@ def process_data(
 
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
+
+
+def load_data_from_s3(bucket_name, remote_path, local_path):
+    """Loads a file from S3. This is used to pull the trained model/encoder/lb from the
+    S3 bucket for the API.
+
+    Args:
+        bucket_name (str): name of the S3 bucket
+        remote_path (str): remote path to the file in S3
+        local_path (str): local path to save the downloaded file
+    """
+    s3 = boto3.client(
+        "s3",
+        aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID", None),
+        aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY", None),
+    )
+
+    s3.download_file(Bucket=bucket_name, Key=remote_path, Filename=local_path)
+    logger.info(
+        "File downloaded successfully from S3 and saved locally in {local_path}"
+    )

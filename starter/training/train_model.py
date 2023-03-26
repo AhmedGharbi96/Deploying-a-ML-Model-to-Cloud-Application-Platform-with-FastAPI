@@ -6,9 +6,8 @@ from pathlib import Path
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
-
-from starter.starter.ml.data import process_data
-from starter.starter.ml.model import (
+from starter.training.ml.data import process_data
+from starter.training.ml.model import (
     compute_model_metrics,
     evaluate_model_on_data_slices,
     inference,

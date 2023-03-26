@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.tree import DecisionTreeClassifier
-from starter.starter.ml.data import process_data
+from starter.training.ml.data import process_data
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
