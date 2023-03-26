@@ -9,3 +9,4 @@ uvicorn
 gunicorn
 dvc[s3]
 awscli
+flask==2.1.3
