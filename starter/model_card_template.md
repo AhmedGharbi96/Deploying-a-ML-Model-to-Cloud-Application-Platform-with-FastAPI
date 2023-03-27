@@ -25,11 +25,14 @@ For additional information see the Model Card paper: https://arxiv.org/pdf/1810.
 - **native-country**: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands.
 - **salary**: >50K, <=50K.
 ## Evaluation Data
-**Census Income Data Set: https://archive.ics.uci.edu/ml/datasets/census+income**
+Census Income Data Set - the model was trained on 80% of the data and evaluated on the remaining 20%.
 ## Metrics
-precision, recall, fbeta
+The model was evaluated on the test on the following metrics:
+precision: 0.598
+recall: 0.608
+fbeta: 0.603
 
 ## Ethical Considerations
-None
+Data from the census are gathered from people. The data vary depending on how those individuals would wish to be perceived and represented. Politics, geographical location and other factors can all affect this type of data. Certain categorical variables yield perfect predictions in terms of slice performance measures. he data are insufficient for 'nationality' feature to trust that the model would handle well larger data set.
 ## Caveats and Recommendations
 The dataset is imbalanced (25% of salaries >50K and 75% of labels <=50K). It is recommended to add some samples to get it balanced.
